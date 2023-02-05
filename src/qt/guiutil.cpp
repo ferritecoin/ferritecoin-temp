@@ -596,10 +596,10 @@ fs::path static StartupShortcutPath()
 {
     std::string chain = gArgs.GetChainName();
     if (chain == CBaseChainParams::MAIN)
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Litecoin.lnk";
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Ferrite.lnk";
     if (chain == CBaseChainParams::TESTNET) // Remove this special case when CBaseChainParams::TESTNET = "testnet4"
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Litecoin (testnet).lnk";
-    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Litecoin (%s).lnk", chain);
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Ferrite (testnet).lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Ferrite (%s).lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
@@ -679,8 +679,8 @@ fs::path static GetAutostartFilePath()
 {
     std::string chain = gArgs.GetChainName();
     if (chain == CBaseChainParams::MAIN)
-        return GetAutostartDir() / "litecoin.desktop";
-    return GetAutostartDir() / strprintf("litecoin-%s.desktop", chain);
+        return GetAutostartDir() / "ferrite.desktop";
+    return GetAutostartDir() / strprintf("ferrite-%s.desktop", chain);
 }
 
 bool GetStartOnSystemStartup()
@@ -724,9 +724,9 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         if (chain == CBaseChainParams::MAIN)
-            optionFile << "Name=Litecoin\n";
+            optionFile << "Name=Ferrite\n";
         else
-            optionFile << strprintf("Name=Litecoin (%s)\n", chain);
+            optionFile << strprintf("Name=Ferrite (%s)\n", chain);
         optionFile << "Exec=" << pszExePath << strprintf(" -min -chain=%s\n", chain);
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";
